@@ -2,7 +2,7 @@ CC=g++
 CFLAGS=-c -Wall
 LDFLAGS=
 SOURCES=my_prog.c
-OBJECTS=$(SOURCES:.c=.0)
+OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=geometry_1
 
 all: $(SOURCES) $(EXECUTABLE)
