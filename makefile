@@ -1,2 +1,2 @@
 all:
-	@gcc -g -Wall -o my_prog.c
+	@gcc -g -Wall my_prog.c -o geometry
