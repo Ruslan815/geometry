@@ -1,24 +1,21 @@
 #include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-
+#include <math.h>
+#include "foo.h"
+using namespace std; 
+const float PI=3.1415;
 int main()
 {
-    int i, n;
-    float x, y, r;
-    std::cout << "Enter number of figures: ";
-    std::cin >> n;
-    float A[n][3];
-    for (i = 0; i < n; i++) {
-        std::cout << "Circle " << i << ": ";
-        std::cin >> x >> y >> r;
-        A[i][0] = x;
-        A[i][1] = y;
-        A[i][2] = r;
-    }
-    for (i = 0; i < n; i++) {
-        std::cout << "Circle " << i << ": x= " << A[i][0] << " y= " << A[i][1]
-                  << " r= " << A[i][2] << ';' << std::endl;
-    }
+    int a,b,c,r;
+    float p,s;
+    cout << "Enter sides of triangle(a,b,c): ";
+    cin >> a >> b >> c;
+    p=PerimetrT(a,b,c);
+    s=SquareT(a,b,c); 
+    cout << endl << "Perimetr: " << p << "   Square: " << s << endl;    
+    cout << "Enter radius of circle: ";
+    cin >> r;
+    p=PerimetrC(r,PI);
+    s=SquareC(r,PI);
+    cout << "Perimetr: " << p << "  Square:  " << s << endl;
     return 0;
 }
