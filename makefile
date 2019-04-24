@@ -1,8 +1,8 @@
 .PHONY: clean all
 
-all: main
+all: geometry
 	
-main: my_prog.o perimetr.o square.o
+geometry: my_prog.o perimetr.o square.o
 	g++ build/my_prog.o build/perimetr.o build/square.o -Wall -Werror -lm  -o bin/geometry
 my_prog.o: src/my_prog.cpp
 	g++ src/my_prog.cpp -o build/my_prog.o -c -Wall -Werror
