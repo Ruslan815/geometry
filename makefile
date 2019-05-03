@@ -3,7 +3,7 @@ CC=g++
 CFLAGS=-Wall -Werror
 SD=~/geometry/src/
 OD=~/geometry/build/
-EXECUTABLE=~/geometry/bin/geometry
+EXECUTABLE=~/geometry/bin/geometry.exe
 all: $(EXECUTABLE)
 	
 $(EXECUTABLE): $(OD)my_prog.o $(OD)perimetr.o $(OD)square.o 
