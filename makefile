@@ -1,11 +1,11 @@
-.PHONY:all clean
+
 CC=gcc
 CFLAGS=-Wall -Werror
 SD=~/geometry/src/
 OD=~/geometry/build/
 EXECUTABLE=~/geometry/bin/geometry
 all: $(EXECUTABLE)
-	
+.PHONY: clean	
 $(EXECUTABLE): $(OD)my_prog.o $(OD)perimetr.o $(OD)square.o 
 	$(CC) $(CFLAGS) -o $(EXECUTABLE) $(OD)my_prog.o $(OD)perimetr.o $(OD)square.o -lm
 $(OD)my_prog.o: $(SD)my_prog.c
