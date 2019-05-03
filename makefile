@@ -1,17 +1,18 @@
-.PHONY: clean all
-
-all: geometry
+.PHONY:all clean
+CC=g++
+CFLAGS=-Wall -Werror
+SD=~/geometry/src/
+OD=~/geometry/build/
+EXECUTABLE=~/geometry/bin/geometry
+all: $(EXECUTABLE)
 	
-geometry: my_prog.o perimetr.o square.o
-	g++ build/my_prog.o build/perimetr.o build/square.o -Wall -Werror -lm  -o bin/geometry
-my_prog.o: src/my_prog.cpp
-	g++ src/my_prog.cpp -o build/my_prog.o -c -Wall -Werror
-
-perimetr.o: src/perimetr.cpp
-	g++  src/perimetr.cpp -o build/perimetr.o -c -Wall -Werror -lm
-
-square.o: src/square.cpp
-	g++ src/square.cpp -o build/square.o -c -Wall -Werror -lm
-
+$(EXECUTABLE): $(OD)my_prog.o $(OD)perimetr.o $(OD)square.o 
+	$(CC) $(CFLAGS) -o $(EXECUTABLE) $(OD)my_prog.o $(OD)perimetr.o $(OD)square.o -lm
+$(OD)my_prog.o: $(SD)my_prog.cpp
+	$(CC) $(CFLAGS) -c -o $(OD)my_prog.o $(SD)my_prog.cpp -lm
+$(OD)perimetr.o: $(SD)perimetr.cpp
+	$(CC) $(CFLAGS) -c -o $(OD)perimetr.o $(SD)perimetr.cpp -lm
+$(OD)square.o: $(SD)square.cpp
+	$(CC) $(CFLAGS) -c -o $(OD)square.o $(SD)square.cpp -lm
 clean:
-	rm -rf build/*.o bin/geometry
+	rm -rf $(EXECUTABLE) $(OD)*.o
