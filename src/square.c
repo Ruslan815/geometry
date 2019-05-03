@@ -16,4 +16,3 @@ float SquareT(int a, int b, int c)
     s = sqrt(t);
     return s;
 }
-
