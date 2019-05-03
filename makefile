@@ -1,18 +1,19 @@
+.PHONY: all clean
+CC = gcc
+CFLAGS= -Wall -Werror
+EXECUTABLE = geometry
+all: bin/$(EXECUTABLE)
 
-CC=gcc
-CFLAGS=-Wall -Werror
-SD=~/geometry/src/
-OD=~/geometry/build/
-EXECUTABLE=~/geometry/bin/geometry
-all: $(EXECUTABLE)
-.PHONY: clean	
-$(EXECUTABLE): $(OD)my_prog.o $(OD)perimetr.o $(OD)square.o 
-	$(CC) $(CFLAGS) -o $(EXECUTABLE) $(OD)my_prog.o $(OD)perimetr.o $(OD)square.o -lm
-$(OD)my_prog.o: $(SD)my_prog.c
-	$(CC) $(CFLAGS) -c -o $(OD)my_prog.o $(SD)my_prog.c -lm
-$(OD)perimetr.o: $(SD)perimetr.c
-	$(CC) $(CFLAGS) -c -o $(OD)perimetr.o $(SD)perimetr.c -lm
-$(OD)square.o: $(SD)square.c
-	$(CC) $(CFLAGS) -c -o $(OD)square.o $(SD)square.c -lm
+bin/$(EXECUTABLE):build/my_prog.o build/perimetr.o build/square.o
+	$(CC) $(CFLAGS) build/my_prog.o build/perimetr.o build/square.o -lm -o bin/$(EXECUTABLE)
+build/my_prog.o: src/my_prog.c
+	$(CC) $(CFLAGS) src/my_prog.c -o build/my_prog.o -c -lm 
+
+build/perimetr.o: src/perimetr.c
+	$(CC) $(CFLAGS) src/perimetr.c -o build/perimetr.o -c -lm 
+
+build/square.o: src/square.c
+	$(CC) $(CFLAGS) src/square.c -o build/square.o -c -lm 
+
 clean:
-	rm -rf $(EXECUTABLE) $(OD)*.o
+	rm -rf build/*.o bin/*.exe 
